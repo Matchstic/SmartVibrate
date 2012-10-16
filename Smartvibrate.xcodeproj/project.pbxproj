@@ -1,0 +1,350 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C9110912162E1674004F62A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9110911162E1674004F62A3 /* Foundation.framework */; };
+		C9110923162E1674004F62A3 /* Smartvibrate.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9110922162E1674004F62A3 /* Smartvibrate.mm */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C9110911162E1674004F62A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C9110916162E1674004F62A3 /* control.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = control.txt; path = Package/DEBIAN/control.txt; sourceTree = "<group>"; };
+		C9110917162E1674004F62A3 /* control */ = {isa = PBXFileReference; lastKnownFileType = text; name = control; path = Package/DEBIAN/control; sourceTree = "<group>"; };
+		C9110919162E1674004F62A3 /* PackageVersion.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PackageVersion.plist; sourceTree = "<group>"; };
+		C911091D162E1674004F62A3 /* Smartvibrate.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Smartvibrate.plist; path = Package/Library/PreferenceLoader/Preferences/Smartvibrate.plist; sourceTree = "<group>"; };
+		C911091E162E1674004F62A3 /* SmartvibrateIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SmartvibrateIcon.png; path = Package/Library/PreferenceLoader/Preferences/SmartvibrateIcon.png; sourceTree = "<group>"; };
+		C911091F162E1674004F62A3 /* SmartvibrateIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SmartvibrateIcon@2x.png"; path = "Package/Library/PreferenceLoader/Preferences/SmartvibrateIcon@2x.png"; sourceTree = "<group>"; };
+		C9110920162E1674004F62A3 /* Smartvibrate-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smartvibrate-Prefix.pch"; sourceTree = "<group>"; };
+		C9110921162E1674004F62A3 /* Smartvibrate.xm */ = {isa = PBXFileReference; lastKnownFileType = text; path = Smartvibrate.xm; sourceTree = "<group>"; };
+		C9110922162E1674004F62A3 /* Smartvibrate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Smartvibrate.mm; sourceTree = "<group>"; };
+		C9110926162E1674004F62A3 /* Smartvibrate.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Smartvibrate.plist; path = Package/Library/MobileSubstrate/DynamicLibraries/Smartvibrate.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C911090C162E1674004F62A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9110912162E1674004F62A3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C9110903162E1674004F62A3 = {
+			isa = PBXGroup;
+			children = (
+				C9110913162E1674004F62A3 /* Smartvibrate */,
+				C9110910162E1674004F62A3 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C9110910162E1674004F62A3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C9110911162E1674004F62A3 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C9110913162E1674004F62A3 /* Smartvibrate */ = {
+			isa = PBXGroup;
+			children = (
+				C9110921162E1674004F62A3 /* Smartvibrate.xm */,
+				C9110922162E1674004F62A3 /* Smartvibrate.mm */,
+				C9110914162E1674004F62A3 /* Package */,
+				C9110918162E1674004F62A3 /* Supporting Files */,
+			);
+			path = Smartvibrate;
+			sourceTree = "<group>";
+		};
+		C9110914162E1674004F62A3 /* Package */ = {
+			isa = PBXGroup;
+			children = (
+				C9110915162E1674004F62A3 /* DEBIAN */,
+				C911091A162E1674004F62A3 /* Library */,
+			);
+			name = Package;
+			sourceTree = "<group>";
+		};
+		C9110915162E1674004F62A3 /* DEBIAN */ = {
+			isa = PBXGroup;
+			children = (
+				C9110916162E1674004F62A3 /* control.txt */,
+				C9110917162E1674004F62A3 /* control */,
+			);
+			name = DEBIAN;
+			sourceTree = "<group>";
+		};
+		C9110918162E1674004F62A3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C9110919162E1674004F62A3 /* PackageVersion.plist */,
+				C9110920162E1674004F62A3 /* Smartvibrate-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C911091A162E1674004F62A3 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				C911091B162E1674004F62A3 /* PreferenceLoader */,
+				C9110924162E1674004F62A3 /* MobileSubstrate */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		C911091B162E1674004F62A3 /* PreferenceLoader */ = {
+			isa = PBXGroup;
+			children = (
+				C911091C162E1674004F62A3 /* Preferences */,
+			);
+			name = PreferenceLoader;
+			sourceTree = "<group>";
+		};
+		C911091C162E1674004F62A3 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				C911091D162E1674004F62A3 /* Smartvibrate.plist */,
+				C911091E162E1674004F62A3 /* SmartvibrateIcon.png */,
+				C911091F162E1674004F62A3 /* SmartvibrateIcon@2x.png */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
+		C9110924162E1674004F62A3 /* MobileSubstrate */ = {
+			isa = PBXGroup;
+			children = (
+				C9110925162E1674004F62A3 /* DynamicLibraries */,
+			);
+			name = MobileSubstrate;
+			sourceTree = "<group>";
+		};
+		C9110925162E1674004F62A3 /* DynamicLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				C9110926162E1674004F62A3 /* Smartvibrate.plist */,
+			);
+			name = DynamicLibraries;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		C911090D162E1674004F62A3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		C911090F162E1674004F62A3 /* Smartvibrate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9110929162E1674004F62A3 /* Build configuration list for PBXNativeTarget "Smartvibrate" */;
+			buildPhases = (
+				C911090A162E1674004F62A3 /* ShellScript */,
+				C911090B162E1674004F62A3 /* Sources */,
+				C911090C162E1674004F62A3 /* Frameworks */,
+				C911090D162E1674004F62A3 /* Headers */,
+				C911090E162E1674004F62A3 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Smartvibrate;
+			productName = Smartvibrate;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C9110905162E1674004F62A3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+			};
+			buildConfigurationList = C9110908162E1674004F62A3 /* Build configuration list for PBXProject "Smartvibrate" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C9110903162E1674004F62A3;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C911090F162E1674004F62A3 /* Smartvibrate */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C911090A162E1674004F62A3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/iOSOpenDev/bin/iosod --xcbp-logos";
+		};
+		C911090E162E1674004F62A3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/iOSOpenDev/bin/iosod --xcbp";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C911090B162E1674004F62A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9110923162E1674004F62A3 /* Smartvibrate.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C9110927162E1674004F62A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(iOSOpenDevPath)/frameworks/**",
+					"$(SDKROOT)/System/Library/PrivateFrameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(iOSOpenDevPath)/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = "$(iOSOpenDevPath)/lib/**";
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = NO;
+				iOSOpenDevPath = /opt/iOSOpenDev;
+			};
+			name = Debug;
+		};
+		C9110928162E1674004F62A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(iOSOpenDevPath)/frameworks/**",
+					"$(SDKROOT)/System/Library/PrivateFrameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(iOSOpenDevPath)/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = "$(iOSOpenDevPath)/lib/**";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				iOSOpenDevPath = /opt/iOSOpenDev;
+			};
+			name = Release;
+		};
+		C911092A162E1674004F62A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Smartvibrate/Smartvibrate-Prefix.pch";
+				INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				iOSOpenDevBuildPackageOnAnyBuild = NO;
+				iOSOpenDevCopyOnBuild = NO;
+				iOSOpenDevDevice = "";
+				iOSOpenDevInstallOnAnyBuild = NO;
+				iOSOpenDevInstallOnProfiling = YES;
+				iOSOpenDevRespringOnInstall = YES;
+				iOSOpenDevUsePackageVersionPList = YES;
+			};
+			name = Debug;
+		};
+		C911092B162E1674004F62A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Smartvibrate/Smartvibrate-Prefix.pch";
+				INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				iOSOpenDevBuildPackageOnAnyBuild = NO;
+				iOSOpenDevCopyOnBuild = NO;
+				iOSOpenDevDevice = "";
+				iOSOpenDevInstallOnAnyBuild = NO;
+				iOSOpenDevInstallOnProfiling = YES;
+				iOSOpenDevRespringOnInstall = YES;
+				iOSOpenDevUsePackageVersionPList = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C9110908162E1674004F62A3 /* Build configuration list for PBXProject "Smartvibrate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9110927162E1674004F62A3 /* Debug */,
+				C9110928162E1674004F62A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9110929162E1674004F62A3 /* Build configuration list for PBXNativeTarget "Smartvibrate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C911092A162E1674004F62A3 /* Debug */,
+				C911092B162E1674004F62A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C9110905162E1674004F62A3 /* Project object */;
+}

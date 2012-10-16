@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Smartvibrate' target in the 'Smartvibrate' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
