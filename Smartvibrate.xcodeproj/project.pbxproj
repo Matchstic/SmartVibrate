@@ -9,20 +9,21 @@
 /* Begin PBXBuildFile section */
 		C9110912162E1674004F62A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9110911162E1674004F62A3 /* Foundation.framework */; };
 		C9110923162E1674004F62A3 /* Smartvibrate.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9110922162E1674004F62A3 /* Smartvibrate.mm */; };
+		C9114A12162E17EA004F62A3 /* libsubstrate.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C9114A11162E17EA004F62A3 /* libsubstrate.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C9110911162E1674004F62A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C9110916162E1674004F62A3 /* control.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = control.txt; path = Package/DEBIAN/control.txt; sourceTree = "<group>"; };
 		C9110917162E1674004F62A3 /* control */ = {isa = PBXFileReference; lastKnownFileType = text; name = control; path = Package/DEBIAN/control; sourceTree = "<group>"; };
 		C9110919162E1674004F62A3 /* PackageVersion.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PackageVersion.plist; sourceTree = "<group>"; };
-		C911091D162E1674004F62A3 /* Smartvibrate.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Smartvibrate.plist; path = Package/Library/PreferenceLoader/Preferences/Smartvibrate.plist; sourceTree = "<group>"; };
 		C911091E162E1674004F62A3 /* SmartvibrateIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SmartvibrateIcon.png; path = Package/Library/PreferenceLoader/Preferences/SmartvibrateIcon.png; sourceTree = "<group>"; };
 		C911091F162E1674004F62A3 /* SmartvibrateIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SmartvibrateIcon@2x.png"; path = "Package/Library/PreferenceLoader/Preferences/SmartvibrateIcon@2x.png"; sourceTree = "<group>"; };
 		C9110920162E1674004F62A3 /* Smartvibrate-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smartvibrate-Prefix.pch"; sourceTree = "<group>"; };
 		C9110921162E1674004F62A3 /* Smartvibrate.xm */ = {isa = PBXFileReference; lastKnownFileType = text; path = Smartvibrate.xm; sourceTree = "<group>"; };
 		C9110922162E1674004F62A3 /* Smartvibrate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Smartvibrate.mm; sourceTree = "<group>"; };
 		C9110926162E1674004F62A3 /* Smartvibrate.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Smartvibrate.plist; path = Package/Library/MobileSubstrate/DynamicLibraries/Smartvibrate.plist; sourceTree = "<group>"; };
+		C9114A11162E17EA004F62A3 /* libsubstrate.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsubstrate.dylib; path = ../../../../../../opt/iOSOpenDev/lib/libsubstrate.dylib; sourceTree = "<group>"; };
+		C9FAAE6A163476AB00583A64 /* Smartvibrate.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Smartvibrate.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9114A12162E17EA004F62A3 /* libsubstrate.dylib in Frameworks */,
 				C9110912162E1674004F62A3 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -40,6 +42,7 @@
 		C9110903162E1674004F62A3 = {
 			isa = PBXGroup;
 			children = (
+				C9114A11162E17EA004F62A3 /* libsubstrate.dylib */,
 				C9110913162E1674004F62A3 /* Smartvibrate */,
 				C9110910162E1674004F62A3 /* Frameworks */,
 			);
@@ -76,7 +79,6 @@
 		C9110915162E1674004F62A3 /* DEBIAN */ = {
 			isa = PBXGroup;
 			children = (
-				C9110916162E1674004F62A3 /* control.txt */,
 				C9110917162E1674004F62A3 /* control */,
 			);
 			name = DEBIAN;
@@ -111,7 +113,7 @@
 		C911091C162E1674004F62A3 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				C911091D162E1674004F62A3 /* Smartvibrate.plist */,
+				C9FAAE6A163476AB00583A64 /* Smartvibrate.plist */,
 				C911091E162E1674004F62A3 /* SmartvibrateIcon.png */,
 				C911091F162E1674004F62A3 /* SmartvibrateIcon@2x.png */,
 			);
@@ -289,12 +291,18 @@
 		C911092A162E1674004F62A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CURRENT_PROJECT_VERSION = 0.1;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smartvibrate/Smartvibrate-Prefix.pch";
 				INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/iOSOpenDev/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				iOSOpenDevBuildPackageOnAnyBuild = NO;
 				iOSOpenDevCopyOnBuild = NO;
 				iOSOpenDevDevice = "";
@@ -308,12 +316,18 @@
 		C911092B162E1674004F62A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CURRENT_PROJECT_VERSION = 0.1;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smartvibrate/Smartvibrate-Prefix.pch";
 				INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/iOSOpenDev/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				iOSOpenDevBuildPackageOnAnyBuild = NO;
 				iOSOpenDevCopyOnBuild = NO;
 				iOSOpenDevDevice = "";
@@ -343,6 +357,7 @@
 				C911092B162E1674004F62A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

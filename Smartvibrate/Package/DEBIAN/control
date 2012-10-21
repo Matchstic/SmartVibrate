@@ -1,7 +1,7 @@
 Package: com.matchstick.Smartvibrate
 Name: Smartvibrate
 Version: 0.1-1
-Description: 
+Description: Uses the iPhone's proximity sensor to stop vibration when messages recieved, such as when the phone is out of a pocket etc.
 Section: System
 Depends: firmware (>= 5.0), mobilesubstrate
 Conflicts: 
@@ -9,7 +9,7 @@ Replaces:
 Priority: optional
 Architecture: iphoneos-arm
 Author: Matt Clarke
-dev: 
+dev: matchstick
 Homepage: 
 Depiction: 
 Maintainer: 

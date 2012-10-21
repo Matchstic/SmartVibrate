@@ -19,7 +19,7 @@
 			<key>isStaticText</key>
 			<true/>
 			<key>label</key>
-			<string>Text and Secure Cells</string>
+			<string>Enabled</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -189,7 +189,6 @@
 			<key>PostNotification</key>
 			<string>com.matchstick.Smartvibrate-preferencesChanged</string>
 		</dict>
-
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
@@ -204,6 +203,6 @@
 		</dict>
 	</array>
 	<key>title</key>
-	<string>Smartvibrate</string>
+	<string>Smart Vibrate</string>
 </dict>
 </plist>
