@@ -2,7 +2,7 @@
 // See http://iphonedevwiki.net/index.php/Logos
 // SmartVibrate by Matt Clarke (matchstick)
 
-#import <NSObject/UIDevice.h>
+#import <UIKit/UIDevice.h>
 
 %hook Springboard
 
@@ -11,13 +11,15 @@
     %orig;
     
     // get state of tweak=on/off
-    static void readDefaults() {
+    static void readDefaults();
+        {
             Boolean exists;
             CFStringRef app = CFSTR("com.matchstick.smartvibrate");
             tweakOn = CFPreferencesGetAppBooleanValue(CFSTR("enabled"), app, &exists);
             if (!exists) tweakOn = true;
         }
     
+    {
     // if both on
     when tweakOn = true
         
@@ -26,6 +28,7 @@
         
         // switch on vibrate if user/pocket close by
         if proximityState = YES
+            {
             // turn on vibrate--write value to .plist
             static void writeToPlist()
             {
@@ -40,9 +43,10 @@
             sleep(5);
             
             // repeat loop
-        
+            }
         // elif proximity sensor reads (out pocket)
-        elif proximityState = NO
+        else proximityState = NO
+            {
             // set vibrate to off
             static void writeToPlist()
             {
@@ -57,5 +61,7 @@
             sleep(5);
             
             // repeat loop
-}
+            }
+    }
+
 %end
