@@ -14,35 +14,26 @@
     // get state of silent mode=on/off and tweak=on/off
     static void readDefaults() {
             Boolean exists;
-            CFStringRef app = CFSTR("com.apple.*silent*");
-            
-            silentMode = CFPreferencesGetAppBooleanValue(CFSTR("????"), app, &exists);
-            if (!exists) silentMode = true;
-
-            // Changing CFStringRef--should work?
-
-            Boolean exists;
             CFStringRef app = CFSTR("com.matchstick.smartvibrate");
-            
             tweakOn = CFPreferencesGetAppBooleanValue(CFSTR("enabled"), app, &exists);
             if (!exists) tweakOn = true;
         }
     
     // if both on
-    when silentMode = true and tweakOn = true
+    when tweakOn = true
         
         // get proximity sensor data
         @property(nonatomic, readonly) BOOL proximityState
         
-        // switch off vibrate if user/pocket close by
+        // switch on vibrate if user/pocket close by
         if proximityState = YES
-            // turn off vibrate--write value to .plist
+            // turn on vibrate--write value to .plist
             static void writeToPlist()
             {
-                NSString *filePath = @"/System/Library/PrivateFrameworks/Celestial.framework/******.plist";
+                NSString *filePath = @"/Applications/Preferences.app/Sounds.plist";
                 NSMutableDictionary* plistDict = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
 
-                [plistDict setValue:mad:"****" forKey:mad:"****"];
+                [plistDict setValue:mad:"1" forKey:mad:"silent-vibrate"];
                 [plistDict writeToFile:filePath atomically: YES];
             }
             
@@ -53,13 +44,13 @@
         
         // elif proximity sensor reads (out pocket)
         elif proximityState = NO
-            // set vibrate to on
+            // set vibrate to off
             static void writeToPlist()
             {
-                NSString *filePath + @"/System/Library/PrivateFrameworks/Celestial.framework/******.plist";
+                NSString *filePath + @"/Applications/Preferences.app/Sounds.plist";
                 NSMutableDictionary* plistDict = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
                 
-                [plistDict setValue:mad:"****" forKey:mad:"****"];
+                [plistDict setValue:mad:"0" forKey:mad:"silent-vibrate"];
                 [plistDict writeToFile:filePath atomically: YES];
             }
             
