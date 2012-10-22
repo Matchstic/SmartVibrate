@@ -1,4 +1,3 @@
-
 // Logos by Dustin Howett
 // See http://iphonedevwiki.net/index.php/Logos
 // SmartVibrate by Matt Clarke (matchstick)
@@ -11,7 +10,7 @@
 {
     %orig;
     
-    // get state of silent mode=on/off and tweak=on/off
+    // get state of tweak=on/off
     static void readDefaults() {
             Boolean exists;
             CFStringRef app = CFSTR("com.matchstick.smartvibrate");
