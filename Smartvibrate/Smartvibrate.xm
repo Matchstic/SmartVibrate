@@ -9,7 +9,8 @@
 
 - (void)applicationDidFinishLaunching:(id)application
 {
-    %orig
+    %orig;
+    
     // get state of silent mode=on/off and tweak=on/off
     static void readDefaults() {
             Boolean exists;
@@ -25,7 +26,7 @@
             
             tweakOn = CFPreferencesGetAppBooleanValue(CFSTR("enabled"), app, &exists);
             if (!exists) tweakOn = true;
-        
+        }
     
     // if both on
     when silentMode = true and tweakOn = true
