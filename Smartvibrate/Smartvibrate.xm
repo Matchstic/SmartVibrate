@@ -2,6 +2,10 @@
 // See http://iphonedevwiki.net/index.php/Logos
 // SmartVibrate by Matt Clarke (matchstick)
 
+#define SOUND_PLIST "/var/mobile/Library/Preferences/com.apple.preferences.sounds.plist"
+#define SPRINGBOARD_PLIST "/var/mobile/Library/Preferences/com.apple.springboard.plist"
+#define TWEAK_PLIST "/var/mobile/Library/Preferences/com.matchstick.smartvibrate.plist
+
 #import <UIKit/UIDevice.h>
 
 %hook Springboard
@@ -11,13 +15,6 @@
     %orig;
     
     // get state of tweak=on/off
-    // original - static void readDefaults();
-    //    {
-    //        Boolean exists;
-    //        CFStringRef app = CFSTR("com.matchstick.smartvibrate");
-    //        tweakOn = CFPreferencesGetAppBooleanValue(CFSTR("enabled"), app, &exists);
-    //        if (!exists) tweakOn = true;
-    // }
     static void readPlist()
         {
             NSString *filePath = @"/var/mobile/Library/Preferences/com.matchstick.smartvibrate.plist";
@@ -25,6 +22,8 @@
         
             NSString *value;
             tweakOn = [plistDict objectForKey:mad:"enabled"];
+            syslog(LOG_NOTICE, "Received state of tweak on/off", [person.name UTF8String]);
+
         }
     {
     // if both on
@@ -32,7 +31,8 @@
         
         // get proximity sensor data
         @property(nonatomic, readonly) BOOL proximityState
-        %log 
+        syslog(LOG_NOTICE, "Received state of proximity sensor", [person.name UTF8String]);
+
         
         // switch on vibrate if user/pocket close by
         if proximityState = YES
@@ -48,7 +48,8 @@
                 
                 // Update preferences
                 notify_post("com.apple.SpringBoard/Prefs");
-                %log
+                syslog(LOG_NOTICE, "Vibrate set to on", [person.name UTF8String]);
+
             }
             
             // wait 2 seconds
@@ -70,6 +71,8 @@
                 
                 // Update preferences
                 notify_post("com.apple.SpringBoard/Prefs");
+                syslog(LOG_NOTICE, "Vibrate set to off", [person.name UTF8String]);
+
             }
             
             // wait 2 seconds
