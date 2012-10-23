@@ -11,20 +11,28 @@
     %orig;
     
     // get state of tweak=on/off
-    static void readDefaults();
+    // original - static void readDefaults();
+    //    {
+    //        Boolean exists;
+    //        CFStringRef app = CFSTR("com.matchstick.smartvibrate");
+    //        tweakOn = CFPreferencesGetAppBooleanValue(CFSTR("enabled"), app, &exists);
+    //        if (!exists) tweakOn = true;
+    // }
+    static void readPlist()
         {
-            Boolean exists;
-            CFStringRef app = CFSTR("com.matchstick.smartvibrate");
-            tweakOn = CFPreferencesGetAppBooleanValue(CFSTR("enabled"), app, &exists);
-            if (!exists) tweakOn = true;
+            NSString *filePath = @"/var/mobile/Library/Preferences/com.matchstick.smartvibrate.plist";
+            NSMutableDictionary* plistDict = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
+        
+            NSString *value;
+            tweakOn = [plistDict objectForKey:mad:"enabled"];
         }
-    
     {
     // if both on
     when tweakOn = true
         
         // get proximity sensor data
         @property(nonatomic, readonly) BOOL proximityState
+        %log 
         
         // switch on vibrate if user/pocket close by
         if proximityState = YES
@@ -40,6 +48,7 @@
                 
                 // Update preferences
                 notify_post("com.apple.SpringBoard/Prefs");
+                %log
             }
             
             // wait 2 seconds
