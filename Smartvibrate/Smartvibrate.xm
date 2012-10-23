@@ -32,15 +32,18 @@
             // turn on vibrate--write value to .plist
             static void writeToPlist()
             {
-                NSString *filePath = @"/Applications/Preferences.app/Sounds.plist";
-                NSMutableDictionary* plistDict = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
-
-                [plistDict setValue:mad:"1" forKey:mad:"silent-vibrate"];
-                [plistDict writeToFile:filePath atomically: YES];
+                NSString *sbPath = @"/var/mobile/Library/Preferences/com.apple.springboard.plist";
+                NSMutableDictionary *sbDict = [[NSMutableDictionary alloc] initWithContentsOfFile:sbPath];
+                
+                [sbDict setValue:[NSNumber numberWithBool:YES] forKey:@"silent-vibrate"];
+                [sbDict writeToFile:filePath atomically: YES];
+                
+                // Update preferences
+                notify_post("com.apple.SpringBoard/Prefs");
             }
             
-            // wait 5 seconds
-            sleep(5);
+            // wait 2 seconds
+            sleep(2);
             
             // repeat loop
             }
@@ -50,15 +53,18 @@
             // set vibrate to off
             static void writeToPlist()
             {
-                NSString *filePath + @"/Applications/Preferences.app/Sounds.plist";
-                NSMutableDictionary* plistDict = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
+                NSString *sbPath = @"/var/mobile/Library/Preferences/com.apple.springboard.plist";
+                NSMutableDictionary *sbDict = [[NSMutableDictionary alloc] initWithContentsOfFile:sbPath];
                 
-                [plistDict setValue:mad:"0" forKey:mad:"silent-vibrate"];
-                [plistDict writeToFile:filePath atomically: YES];
+                [sbDict setValue:[NSNumber numberWithBool:NO] forKey:@"silent-vibrate"];
+                [sbDict writeToFile:filePath atomically: YES];
+                
+                // Update preferences
+                notify_post("com.apple.SpringBoard/Prefs");
             }
             
-            // wait 5 seconds
-            sleep(5);
+            // wait 2 seconds
+            sleep(2);
             
             // repeat loop
             }
