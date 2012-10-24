@@ -7,6 +7,7 @@
 #define TWEAK_PLIST "/var/mobile/Library/Preferences/com.matchstick.smartvibrate.plist
 
 #import <UIKit/UIDevice.h>
+bool tweakOn = true
 
 %hook Springboard
 
@@ -15,19 +16,18 @@
     %orig;
     
     // get state of tweak=on/off
-    static void readPlist()
+    int readPlist()
         {
             NSString *filePath = @"/var/mobile/Library/Preferences/com.matchstick.smartvibrate.plist";
             NSMutableDictionary* plistDict = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
         
             NSString *value;
-            tweakOn = [plistDict objectForKey:mad:"enabled"];
-            syslog(LOG_NOTICE, "Received state of tweak on/off", [person.name UTF8String]);
+            bool tweakOn = [plistDict objectForKey:mad:"enabled"];
 
         }
     {
     // if both on
-    when tweakOn = true
+        while (tweakOn)
         
         // get proximity sensor data
         @property(nonatomic, readonly) BOOL proximityState
