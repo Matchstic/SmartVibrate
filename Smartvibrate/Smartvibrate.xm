@@ -31,8 +31,6 @@ bool tweakOn = true
         
         // get proximity sensor data
         @property(nonatomic, readonly) BOOL proximityState
-        syslog(LOG_NOTICE, "Received state of proximity sensor", [person.name UTF8String]);
-
         
         // switch on vibrate if user/pocket close by
         if proximityState = YES
@@ -48,7 +46,6 @@ bool tweakOn = true
                 
                 // Update preferences
                 notify_post("com.apple.SpringBoard/Prefs");
-                syslog(LOG_NOTICE, "Vibrate set to on", [person.name UTF8String]);
 
             }
             
@@ -56,6 +53,7 @@ bool tweakOn = true
             sleep(2);
             
             // repeat loop
+                
             }
         // elif proximity sensor reads (out pocket)
         else proximityState = NO
@@ -71,7 +69,6 @@ bool tweakOn = true
                 
                 // Update preferences
                 notify_post("com.apple.SpringBoard/Prefs");
-                syslog(LOG_NOTICE, "Vibrate set to off", [person.name UTF8String]);
 
             }
             
@@ -79,7 +76,8 @@ bool tweakOn = true
             sleep(2);
             
             // repeat loop
+                
             }
     }
-
+}
 %end
