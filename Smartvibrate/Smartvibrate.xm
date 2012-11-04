@@ -2,82 +2,93 @@
 // See http://iphonedevwiki.net/index.php/Logos
 // SmartVibrate by Matt Clarke (matchstick)
 
-#define SOUND_PLIST "/var/mobile/Library/Preferences/com.apple.preferences.sounds.plist"
-#define SPRINGBOARD_PLIST "/var/mobile/Library/Preferences/com.apple.springboard.plist"
-#define TWEAK_PLIST "/var/mobile/Library/Preferences/com.matchstick.smartvibrate.plist
-
 #import <UIKit/UIDevice.h>
-bool tweakOn = true
 
-%hook Springboard
+static BOOL tweakOn=YES
 
-- (void)applicationDidFinishLaunching:(id)application
+@interface SmartVibrate : NSObject <UIAlertViewDelegate>
+
+    NSString *plistPath;
+    BOOL *tweakOn;
+
+@end
+
+@implementation SmartVibrate
+
+-(id)init
 {
-    %orig;
-    
-    // get state of tweak=on/off
-    int readPlist()
-        {
-            NSString *filePath = @"/var/mobile/Library/Preferences/com.matchstick.smartvibrate.plist";
-            NSMutableDictionary* plistDict = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
-        
-            NSString *value;
-            bool tweakOn = [plistDict objectForKey:mad:"enabled"];
+    //Set variabiles for tweak
+    plistPath = [NSString stringWithString:@"/var/mobile/Library/Preferences/com.matchstick.smartvibrate.plist"];
+    NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+    tweakOn = [[dict objectForKey:@"enabled"] boolValue];
+}
 
-        }
-    {
-    // if both on
-        while (tweakOn)
-        
-        // get proximity sensor data
-        @property(nonatomic, readonly) BOOL proximityState
-        
-        // switch on vibrate if user/pocket close by
-        if proximityState = YES
-            {
-            // turn on vibrate--write value to .plist
-            static void writeToPlist()
-            {
-                NSString *sbPath = @"/var/mobile/Library/Preferences/com.apple.springboard.plist";
-                NSMutableDictionary *sbDict = [[NSMutableDictionary alloc] initWithContentsOfFile:sbPath];
-                
-                [sbDict setValue:[NSNumber numberWithBool:YES] forKey:@"silent-vibrate"];
-                [sbDict writeToFile:filePath atomically: YES];
-                
-                // Update preferences
-                notify_post("com.apple.SpringBoard/Prefs");
-
-            }
-            
-            // wait 2 seconds
-            sleep(2);
-            
-            // repeat loop
-                
-            }
-        // elif proximity sensor reads (out pocket)
-        else proximityState = NO
-            {
-            // set vibrate to off
-            static void writeToPlist()
-            {
-                NSString *sbPath = @"/var/mobile/Library/Preferences/com.apple.springboard.plist";
-                NSMutableDictionary *sbDict = [[NSMutableDictionary alloc] initWithContentsOfFile:sbPath];
-                
-                [sbDict setValue:[NSNumber numberWithBool:NO] forKey:@"silent-vibrate"];
-                [sbDict writeToFile:filePath atomically: YES];
-                
-                // Update preferences
-                notify_post("com.apple.SpringBoard/Prefs");
-
-            }
-            
-            // wait 2 seconds
-            sleep(2);
-            
-            // repeat loop
-                
-            }
+//Debug only
+-(void)showAlert
+{
+    if (tweakOn) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Testing"
+        message:@"Tweak should now be on!"
+        delegate:nil
+        cancelButtonTitle:@"Thanks"
+        otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Testing"
+        message:@"Tweak is disabled"
+        delegate:nil
+        cancelButtonTitle:@"Thanks"
+        otherButtonTitles:nil];
+        [alert show];
+        [alert release];
     }
 }
-%end
+
+// get proximity value
+@property(nonatomic, getter=isProximityMonitoringEnabled)BOOL proximityMonitoringEnabled
+
+-(BOOL)proximitySensoredIsEnabled {
+    {
+        [UIDevice currentDevice].proximityMonitoringEnabled=YES;
+        return [[UIDevice currentDevice].isProximityMonitoringEnabled;
+    }
+            
+    if ([self proximitySensoredIsEnabled]) {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+        selector:@selector(handleProximityChangeNotification:)
+        name:UIDeviceProximityStateDidChangeNotification object:nil];
+        }
+}
+
+@property(nonatomic, readonly) BOOL proximityState
+
+-(void)handleProximityChangeNotification:(NSNotification*)notification {
+    while (tweakOn) {
+        if ([UIDevice currentDevice].proximityState) {
+           // Set vibrate to on
+            NSString *sbPath = @"/var/mobile/Library/Preferences/com.apple.springboard.plist";
+            NSMutableDictionary *sbDict = [[NSMutableDictionary alloc] initWithContentsOfFile:sbPath];
+            [sbDict setValue:[NSNumber numberWithBool:YES] forKey:@"silent-vibrate"];
+            [sbDict writeToFile:filePath atomically: YES];
+            
+            // Update preferences
+            notify_post("com.apple.SpringBoard/Prefs");
+            sleep(2);
+        }
+        else {
+            // Set vibrate to off
+            NSString *sbPath = @"/var/mobile/Library/Preferences/com.apple.springboard.plist";
+            NSMutableDictionary *sbDict = [[NSMutableDictionary alloc] initWithContentsOfFile:sbPath];
+            [sbDict setValue:[NSNumber numberWithBool:NO] forKey:@"silent-vibrate"];
+            [sbDict writeToFile:filePath atomically: YES];
+            
+            // Update preferences
+            notify_post("com.apple.SpringBoard/Prefs");
+            sleep(2);
+        }
+    }
+}
+    
+@end
